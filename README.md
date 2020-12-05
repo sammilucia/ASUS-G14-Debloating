@@ -36,11 +36,12 @@ As we know, there is also the issue of Windows Updates reinstalling things on th
 ## Why not just disable drivers?
 A lot of people aren't aware that disabling drivers in Device Manager also may disable the power management for those drivers (e.g. the NVIDIA USBC driver). Some devices may revert to 100% power usage when their corresponding driver is disabled, so this is not best practice.
 
-## Links useful links
+## Useful links
 - How to enable HIPM/DIPM power management for the SSD (see [here](https://www.sevenforums.com/tutorials/177819-ahci-link-power-management-enable-hipm-dipm.html))
 - Disabled Turbo Boost for better power/heat management control (see [here](https://www.reddit.com/r/ZephyrusG14/comments/gho535/important_update_to_properly_disable_boosting/))
 - Update the Western Digital SSD firmware using [Western Digital Dashboard](https://support.wdc.com/downloads.aspx)
 - To prevent ASUS drivers from reinstalling via Windows Update use the [Microsoft "Show or hide updates" troubleshooter](https://support.microsoft.com/en-us/help/3183922/how-to-temporarily-prevent-a-windows-update-from-reinstalling-in-windo)
+- Windows 10 20H2 Services that are safe to disable [Disable Windows 10 20H2 services](https://www.deviantart.com/sammilucia/art/Windows-10-20H2-Services-that-are-safe-to-disable-861880643)
 
 ## Before starting
 1. Ensure all Windows Updates are installed and the laptop is in a known-good state.
@@ -140,6 +141,3 @@ Thanks to [u/EbolaBoi](https://reddit.com/u/EbolaBoi) who achieved this by creat
 5. Add an action > Start a program > `Powershell.exe (Get-WmiObject -Namespace root/WMI -Class AsusAtkWmi_WMNB).DEVS(0x00120057, 60)` (Use 60 for 60%, 80 for 80%, etc.)
 ![Limit Battery Task 5](/images/limit_battery_task_5.png)
 6. Conditions > Stop if the computer ceases to be idle, Stop if the computer switches to battery power
-
-### Disabling Windows 10 20H2 services
-See my guide here for Windows 10 20H2 Services are safe to disable: https://www.deviantart.com/sammilucia/art/Windows-10-20H2-Services-that-are-safe-to-disable-861880643
