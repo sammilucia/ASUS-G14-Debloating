@@ -130,28 +130,16 @@ From an elevated command prompt run:
 Thanks to [u/EbolaBoi](https://reddit.com/u/EbolaBoi) who achieved this by creating a Scheduled Task. THe reason for doing this is to conserve battery life.
 
 1. Create a new Scheduled Task called "Limit Charge at 60%" (or 80%, etc.)
+![Limit Battery Task 1](/images/limit_battery_task_1.png)
 2. Select "Run with highest privileges"
+![Limit Battery Task 2](/images/limit_battery_task_2.png)
 3. Configure the Trigger to "Run at login of any user"
-4. Configure the Trigger to "Run on a custom filter event" > See last slide below for the Custom Filter
-4. Add an action > Start a program > Powershell.exe (Get-WmiObject -Namespace root/WMI -Class AsusAtkWmi_WMNB).DEVS(0x00120057, 60) << Use 60 for 60%, 80 for 80%, etc.
+![Limit Battery Task 3](/images/scheduled_task_3.png)
+4. Configure the Trigger to "Run on a custom filter event" per this screenshot:
+![Limit Battery Task 4](/images/scheduled_task_4.png)
+5. Add an action > Start a program > `Powershell.exe (Get-WmiObject -Namespace root/WMI -Class AsusAtkWmi_WMNB).DEVS(0x00120057, 60)` (Use 60 for 60%, 80 for 80%, etc.)
+![Limit Battery Task 5](/images/scheduled_task_5.png)
+6. Conditions > Stop if the computer ceases to be idle, Stop if the computer switches to battery power
 
-Conditions > Stop if the computer ceases to be idle, Stop if the computer switches to battery power
-
-r/ZephyrusG14 - Asus Zephyrus G14 bloatwear cleanup guide
-General: Limit charge to 60%
-
-Trigger: Run at login
-
-r/ZephyrusG14 - Asus Zephyrus G14 bloatwear cleanup guide
-Action: <PowerShell command> (see above)
-
-r/ZephyrusG14 - Asus Zephyrus G14 bloatwear cleanup guide
-Conditions: Stop if the computer ceases to be idle, Stop if the computer switches to battery power
-
-r/ZephyrusG14 - Asus Zephyrus G14 bloatwear cleanup guide
-Custom Filter: Run on a custom filter event
-
-Problems
-None known. Please let me know if you find any 😊
-
-You can see what Windows 10 20H2 Services are safe to disable here: https://www.deviantart.com/sammilucia/art/Windows-10-20H2-Services-that-are-safe-to-disable-861880643
+### Disabling Windows 10 20H2 services
+See my guide here for Windows 10 20H2 Services are safe to disable: https://www.deviantart.com/sammilucia/art/Windows-10-20H2-Services-that-are-safe-to-disable-861880643
