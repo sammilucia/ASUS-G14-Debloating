@@ -134,11 +134,11 @@ Thanks to [u/EbolaBoi](https://reddit.com/u/EbolaBoi) who achieved this by creat
 2. Select "Run with highest privileges"
 ![Limit Battery Task 2](/images/limit_battery_task_2.png)
 3. Configure the Trigger to "Run at login of any user"
-![Limit Battery Task 3](/images/scheduled_task_3.png)
+![Limit Battery Task 3](/images/limit_battery_task_3.png)
 4. Configure the Trigger to "Run on a custom filter event" per this screenshot:
-![Limit Battery Task 4](/images/scheduled_task_4.png)
+![Limit Battery Task 4](/images/limit_battery_task_4.png)
 5. Add an action > Start a program > `Powershell.exe (Get-WmiObject -Namespace root/WMI -Class AsusAtkWmi_WMNB).DEVS(0x00120057, 60)` (Use 60 for 60%, 80 for 80%, etc.)
-![Limit Battery Task 5](/images/scheduled_task_5.png)
+![Limit Battery Task 5](/images/limit_battery_task_5.png)
 6. Conditions > Stop if the computer ceases to be idle, Stop if the computer switches to battery power
 
 ### Disabling Windows 10 20H2 services
