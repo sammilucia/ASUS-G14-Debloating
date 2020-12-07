@@ -19,11 +19,14 @@ I welcome other people to work on this project. Please [say hello](https://githu
 - ROG RGB lighting
 - AniMe Matrix Display
 
+## Known problems
+- Microphone on/off key doesn't work after this procedure (I assume one of the deleted services controlled this)
+
 ## Background
 I've seen many posts on how to remove ASUS / ROG / Armoury and other software from the ASUS G14 notebooks, however none of them went into the detail I wanted. So I started experimenting. Below is an extensive list for how to _properly_ and _cleanly_ remove almost all ASUS software, without affecting critical functions.
 
 ## Power usage
-I'm using the WQHD G14 (2560x1440) which will probably draw more power than the FHD (1920x1080) version. However during general use my laptop sits between 6,200mW and 8,900mW of battery draw, with screen brightness on 30% and keyboard lighting on "low". This guide has reduced power usage by around 1,000mW. This is with [Bitdefender Free](https://www.bitdefender.com/solutions/free.html), [MacType](https://github.com/snowie2000/mactype) (of which I am also an author), [Rainmeter](https://www.rainmeter.net/), [Free Shooter](https://www.henrypp.org/product/freeshooter), [Mullvad VPN](https://mullvad.net/en/), [TinyWall](https://tinywall.pados.hu/), two instances of Google Backup & Sync x2 (idle), and [Phrase Express Client](https://www.phraseexpress.com/) running.
+I'm using the WQHD G14 (2560x1440) which will probably draw more power than the FHD (1920x1080) version. However during general use my laptop sits between 5,400mW and 7,200mW of battery draw, with screen brightness on 30% and keyboard lighting on "low". This guide has reduced power usage by around 1,000mW. This is with [Bitdefender Free](https://www.bitdefender.com/solutions/free.html), [MacType](https://github.com/snowie2000/mactype) (of which I am also an author), [Rainmeter](https://www.rainmeter.net/), [Free Shooter](https://www.henrypp.org/product/freeshooter), [Mullvad VPN](https://mullvad.net/en/), [TinyWall](https://tinywall.pados.hu/), two instances of Google Backup & Sync x2 (idle), and [Phrase Express Client](https://www.phraseexpress.com/) running.
 
 ## Performance
 This doesn't affect performance in a noticable way. It certainly won't reduce performance. If there is any difference, it will be a few percent improvement.
@@ -49,10 +52,6 @@ A lot of people aren't aware that disabling drivers in Device Manager also may d
 2. To install new NVIDIA and AMD drivers, I recommend installing both in "clean-up" or "clean install" mode, which deletes all the previous drivers and settings, then installing the most minimal set of drivers you need.
 
 ## Procedure
-
-
-
-[Edit 1] **Armoury Crate Control interface** still exists in Device Manager > System devices. I'm going to leave this for now because a) it will just be reinstalled if we remove it, b) it's likely just an endpoint for the AniMe matrix display, and doesn't actually do anything without the Armoury Crate software installed, and c) I don't want to cause any power management issues or use a really hacky solution. (Everything else in this procedure is pretty clean.)
 
 ### Software cleanup
 Using your uninstaller of choice:
@@ -126,6 +125,7 @@ From an elevated command prompt run:
  - ASUSSoftwareManager
  - ASUSSystemAnalysis
  - ASUSSystemDiagnosis
+ 7. Delete the folder C:\Program Files (x86)\LightingService
 
 ### Limit maximum battery charge percent
 Thanks to [u/EbolaBoi](https://reddit.com/u/EbolaBoi) who achieved this by creating a Scheduled Task. THe reason for doing this is to conserve battery life.
@@ -141,3 +141,5 @@ Thanks to [u/EbolaBoi](https://reddit.com/u/EbolaBoi) who achieved this by creat
 5. Add an action > Start a program > `Powershell.exe (Get-WmiObject -Namespace root/WMI -Class AsusAtkWmi_WMNB).DEVS(0x00120057, 60)` (Use 60 for 60%, 80 for 80%, etc.)
 ![Limit Battery Task 5](/images/limit_battery_task_5.png)
 6. Conditions > Stop if the computer ceases to be idle, Stop if the computer switches to battery power
+
+**Note: Armoury Crate Control interface** still exists in Device Manager > System devices. I'm going to leave this for now because a) it will just be reinstalled if we remove it, b) it's likely just an endpoint for the AniMe matrix display, and doesn't actually do anything without the Armoury Crate software installed, and c) I don't want to cause any power management issues or use a really hacky solution. (Everything else in this procedure is pretty clean.)
