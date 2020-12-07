@@ -119,13 +119,13 @@ From an elevated command prompt run:
 4. Delete the folder C:\Program Files (x86)\ASUS
 5. Delete the folder %LocalAppData%\ASUS
 6. Delete C:\Windows\System32\DriverStore\FileRepository\asussci2.inf_amd64_34ba03d292044348\ (**Note:** *I haven't done this next step, it's not necessary as the services are deleted, and it will corrupt the driver signature {CAT} which could cause Windows to reinstall it and undo everything you've done.*)
- - ASUSLinkNear
- - ASUSLinkRemote
- - ASUSLinkRemoteLicense
- - ASUSSoftwareManager
- - ASUSSystemAnalysis
- - ASUSSystemDiagnosis
- 7. Delete the folder C:\Program Files (x86)\LightingService
+   - ASUSLinkNear
+   - ASUSLinkRemote
+   - ASUSLinkRemoteLicense
+   - ASUSSoftwareManager
+   - ASUSSystemAnalysis
+   - ASUSSystemDiagnosis
+7. Delete the folder C:\Program Files (x86)\LightingService
 
 ### Limit maximum battery charge percent
 Thanks to [u/EbolaBoi](https://reddit.com/u/EbolaBoi) who achieved this by creating a Scheduled Task. THe reason for doing this is to conserve battery life.
