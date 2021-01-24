@@ -134,7 +134,11 @@ Removing MyAsus disables the ability to enable/disable the microphone from the k
 
 To enable the OSD for the Fn buttons, set the following file:
 `C:\Windows\System32\DriverStore\FileRepository\asussci2.inf_amd64_[UID]\ASUSOptimization\AsusOSD.exe`
-...to startup with windows (either add it to the Startup folder or create a Scheduled Task)
+...to startup with Windows (either add it to the Startup folder or create a Scheduled Task).
+
+This file will also possibly be in the following locations. Check the file versions and dates and use the newest:
+
+Note, all these files have the same version number (2.1.9.0), however only two of them are identical (the highlighted ones).
 
 ### Limit maximum battery charge percent
 Thanks again to [u/EbolaBoi](https://reddit.com/u/EbolaBoi) who achieved this by creating a Scheduled Task. THe reason for doing this is to conserve battery life.
