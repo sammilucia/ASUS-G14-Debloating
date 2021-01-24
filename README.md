@@ -136,9 +136,12 @@ To enable the OSD for the Fn buttons, set the following file:
 `C:\Windows\System32\DriverStore\FileRepository\asussci2.inf_amd64_[UID]\ASUSOptimization\AsusOSD.exe`
 ...to startup with Windows (either add it to the Startup folder or create a Scheduled Task).
 
-This file will also possibly be in the following locations. Check the file versions and dates and use the newest:
+This file will also possibly be in several locations, e.g:
 ![AsusOSD](/images/asusosd.jpg)
 Note, all these files have the same version number (2.1.9.0), however only two of them are identical (the highlighted ones).
+
+Ideally you'll want to use the same location that the still existing ASUS Optimization Service runs from, so there is no version conflict. You can copy this location from services.msc, i.e:
+![Asus_Optimization](/images/asus_optimization.jpg)
 
 ### Limit maximum battery charge percent
 Thanks again to [u/EbolaBoi](https://reddit.com/u/EbolaBoi) who achieved this by creating a Scheduled Task. THe reason for doing this is to conserve battery life.
