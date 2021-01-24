@@ -20,10 +20,12 @@ I welcome other people to work on this project. Please [say hello](https://githu
 - AniMe Matrix Display
 
 ## Known problems
-- Microphone on/off key doesn't work after this procedure (I assume one of the deleted services controlled this)
+- None at this time! :)
 
 ## Background
 I've seen many posts on how to remove ASUS / ROG / Armoury and other software from the ASUS G14 notebooks, however none of them went into the detail I wanted. So I started experimenting. Below is an extensive list for how to _properly_ and _cleanly_ remove almost all ASUS software, without affecting critical functions.
+
+Frankly my laptop is 100% function-first and I prefer as little software on there as possible. I've never missed the ASUS software. For example why do I want my PC to be able to "Link" with nearby devices? For me—I don't!
 
 ## Power usage
 I'm using the WQHD G14 (2560x1440) which will probably draw more power than the FHD (1920x1080) version. However during general use my laptop sits between 5,400mW and 7,200mW of battery draw, with screen brightness on 30% and keyboard lighting on "low". This guide has reduced power usage by around 1,000mW. This is with [Bitdefender Free](https://www.bitdefender.com/solutions/free.html), [MacType](https://github.com/snowie2000/mactype) (of which I am also an author), [Rainmeter](https://www.rainmeter.net/), [Free Shooter](https://www.henrypp.org/product/freeshooter), [Mullvad VPN](https://mullvad.net/en/), [TinyWall](https://tinywall.pados.hu/), two instances of Google Backup & Sync x2 (idle), and [Phrase Express Client](https://www.phraseexpress.com/) running.
@@ -127,8 +129,15 @@ From an elevated command prompt run:
    - ASUSSystemDiagnosis
 7. Delete the folder C:\Program Files (x86)\LightingService
 
+### Enable Microphone function key and On-screen display (OSD)
+Removing MyAsus disables the ability to enable/disable the microphone from the keyboard. Thank you to [u/EbolaBoi](https://reddit.com/u/EbolaBoi) for this!
+
+To enable the OSD for the Fn buttons, set the following file:
+`C:\Windows\System32\DriverStore\FileRepository\asussci2.inf_amd64_[UID]\ASUSOptimization\AsusOSD.exe`
+...to startup with windows (either add it to the Startup folder or create a Scheduled Task)
+
 ### Limit maximum battery charge percent
-Thanks to [u/EbolaBoi](https://reddit.com/u/EbolaBoi) who achieved this by creating a Scheduled Task. THe reason for doing this is to conserve battery life.
+Thanks again to [u/EbolaBoi](https://reddit.com/u/EbolaBoi) who achieved this by creating a Scheduled Task. THe reason for doing this is to conserve battery life.
 
 1. Create a new Scheduled Task called "Limit Charge at 60%" (or 80%, etc.)
 ![Limit Battery Task 1](/images/limit_battery_task_1.png)
