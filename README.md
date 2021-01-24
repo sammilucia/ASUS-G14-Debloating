@@ -137,7 +137,7 @@ To enable the OSD for the Fn buttons, set the following file:
 ...to startup with Windows (either add it to the Startup folder or create a Scheduled Task).
 
 This file will also possibly be in the following locations. Check the file versions and dates and use the newest:
-
+![AsusOSD.exe](/images/asusosd.png)
 Note, all these files have the same version number (2.1.9.0), however only two of them are identical (the highlighted ones).
 
 ### Limit maximum battery charge percent
