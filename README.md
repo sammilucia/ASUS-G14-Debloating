@@ -1,8 +1,13 @@
 # ASUS ROG Zephyrus G14 - Software Debloating
 Originally posted as the ASUS G14 bloatware cleanup guide [here](https://www.reddit.com/r/ZephyrusG14/comments/k4ch5x/asus_zephyrus_g14_bloatwear_cleanup_guide/).
 
+## Notes:
+1. _If you'd like to use a third party tool to control your G14 instead, I recommend the [G14ControlV2](G14ControlV2 https://github.com/aredden/electron-g14control) project, which is actively developed_
+2. _If you only want to control fan speeds/curves, I use [atrofac](https://github.com/cronosun/atrofac)_
+3. _If you encounter problems, see the **Debugging** section at the bottom_
+
 ## What does this do?
-This guide removes all possible ASUS software while still leaving critical functions working.
+This guide removes all possible ASUS software (MyASUS, Armoury Crates, and other unnecessary files) while still leaving critical functions intact.
 
 ## Who is this for?
 Advanced users, IT professionals, enthusiasts, people who want to learn how stuff works.
@@ -128,19 +133,21 @@ From an elevated command prompt run:
    - ASUSSystemAnalysis
    - ASUSSystemDiagnosis
 7. Delete the folder C:\Program Files (x86)\LightingService
+8. It's safe to delete the entire folder C:\eSupport\ and contents
+9. It's safe to delete the entire folder C:\Drivers\ and contents
 
-### Enable Microphone function key and On-screen display (OSD)
-Removing MyAsus disables the ability to enable/disable the microphone from the keyboard. Thank you to [u/EbolaBoi](https://reddit.com/u/EbolaBoi) for this!
+### Enable On-screen display (OSD)
+Thank you to [u/EbolaBoi](https://reddit.com/u/EbolaBoi) for this tip!
 
 To enable the OSD for the Fn buttons, set the following file:
 `C:\Windows\System32\DriverStore\FileRepository\asussci2.inf_amd64_[UID]\ASUSOptimization\AsusOSD.exe`
 ...to startup with Windows (either add it to the Startup folder or create a Scheduled Task).
 
-This file will also possibly be in several locations, e.g:
-![AsusOSD](/images/asusosd.jpg)
-Note, all these files have the same version number (2.1.9.0), however only two of them are identical (the highlighted ones).
+_Note:_ If you're happy with the default Windows OSD, you don't need to run the AsusOSD.exe.
 
-Ideally you'll want to use the same location that the still existing ASUS Optimization Service runs from, so there is no version conflict. You can copy this location from services.msc, i.e:
+There may also be a few `asussci2.inf_amd64_[UID]` folders. They will likely have the same version number (2.1.9.0), but a binary compare reveals they are non-identical. Use the AsusOSD.exe with the newest date.
+
+For further confirmation of using the correct file, this should also be the same file location the Asus Optimization Service runs from. You can copy this location from services.msc, i.e:
 ![Asus_Optimization](/images/asus_optimization.jpg)
 
 ### Limit maximum battery charge percent
@@ -159,3 +166,16 @@ Thanks again to [u/EbolaBoi](https://reddit.com/u/EbolaBoi) who achieved this by
 6. Conditions > Stop if the computer ceases to be idle, Stop if the computer switches to battery power
 
 **Note: Armoury Crate Control interface** still exists in Device Manager > System devices. I'm going to leave this for now because a) it will just be reinstalled if we remove it, b) it's likely just an endpoint for the AniMe matrix display, and doesn't actually do anything without the Armoury Crate software installed, and c) I don't want to cause any power management issues or use a really hacky solution. (Everything else in this procedure is pretty clean.)
+
+## Debugging
+
+### 1. Microphone on/off Fn key not working
+In some instances, the Keyboard Firmware update (entitled "Hotfix"—ROG Keyboard Firmware Update tool V2.3.0) does not correctly install due to an error in the `installall.bat` script. To work around this, instead of running `installall.bat`, do:
+
+1. Run `installer.exe` as Administrator
+2. Run `install.exe` as Administrator
+3. Reboot
+
+The microphone Fn key should now be working.
+
+_Note: If you have manually disabled the inbuilt microphone in the Sound Control Panel, the microphone Fn key also won't work._
