@@ -25,5 +25,3 @@ taskkill /IM "GoogleCrashHandler64.exe" /F
 rem Delete GoogleCrashHandler*.exe
 cd "C:\Program Files (x86)\Google\Update"
 del /s GoogleCrashHandler*.exe
-
-pause
