@@ -2,8 +2,9 @@
 Originally posted as the ASUS G14 bloatware cleanup guide [here](https://www.reddit.com/r/ZephyrusG14/comments/k4ch5x/asus_zephyrus_g14_bloatwear_cleanup_guide/).
 
 ## Notes:
-1. _If you'd like to use a third party tool to control your G14 instead, I recommend the [G14ControlV2](G14ControlV2 https://github.com/aredden/electron-g14control) project, which is actively developed_
+1. _If you'd like to use a third party tool to control your G14 instead, you could use [G14ControlV2](G14ControlV2 https://github.com/aredden/electron-g14control). I haven't tried it.
 2. _If you only want to control fan speeds/curves, I use [atrofac](https://github.com/cronosun/atrofac)_
+3. _If you want to limit battery charging, I use [atrofac](https://github.com/cronosun/atrofac)_
 3. _If you encounter problems, see the **Debugging** section at the bottom_
 
 ## What does this do?
@@ -33,7 +34,7 @@ I've seen many posts on how to remove ASUS / ROG / Armoury and other software fr
 Frankly my laptop is 100% function-first and I prefer as little software on there as possible. I've never missed the ASUS software. For example why do I want my PC to be able to "Link" with nearby devices? For me—I don't!
 
 ## Power usage
-I'm using the WQHD G14 (2560x1440) which will probably draw more power than the FHD (1920x1080) version. However during general use my laptop sits between 5,400mW and 7,200mW of battery draw, with screen brightness on 30% and keyboard lighting on "low". This guide has reduced power usage by around 1,000mW. This is with [Bitdefender Free](https://www.bitdefender.com/solutions/free.html), [MacType](https://github.com/snowie2000/mactype) (of which I am also an author), [Rainmeter](https://www.rainmeter.net/), [Free Shooter](https://www.henrypp.org/product/freeshooter), [Mullvad VPN](https://mullvad.net/en/), [TinyWall](https://tinywall.pados.hu/), two instances of Google Backup & Sync x2 (idle), and [Phrase Express Client](https://www.phraseexpress.com/) running.
+I'm using the WQHD G14 (2560x1440) which will probably draw more power than the FHD (1920x1080) version. However during general use my laptop sits between 5,400mW and 7,200mW of battery draw, with screen brightness on 30% and keyboard lighting on "low". This guide has reduced power usage by around 1,000mW.
 
 ## Performance
 This doesn't affect performance in a noticable way. It certainly won't reduce performance. If there is any difference, it will be a few percent improvement.
@@ -50,42 +51,48 @@ A lot of people aren't aware that disabling drivers in Device Manager also may d
 - How to enable HIPM/DIPM power management for the SSD (see [here](https://www.sevenforums.com/tutorials/177819-ahci-link-power-management-enable-hipm-dipm.html))
 - Disabled Turbo Boost for better power/heat management control (see [here](https://www.reddit.com/r/ZephyrusG14/comments/gho535/important_update_to_properly_disable_boosting/))
 - Update the Western Digital SSD firmware using [Western Digital Dashboard](https://support.wdc.com/downloads.aspx)
-- To prevent ASUS drivers from reinstalling via Windows Update use the [Microsoft "Show or hide updates" troubleshooter](https://support.microsoft.com/en-us/help/3183922/how-to-temporarily-prevent-a-windows-update-from-reinstalling-in-windo)
+- To prevent ASUS drivers from reinstalling via Windows Update use the [Microsoft "Show or hide updates" troubleshooter](http://download.microsoft.com/download/F/2/2/F22D5FDB-59CD-4275-8C95-1BE17BF70B21/wushowhide.diagcab)
 - Windows 10 20H2 Services that are safe to disable [Disable Windows 10 20H2 services](https://www.deviantart.com/sammilucia/art/Windows-10-20H2-Services-that-are-safe-to-disable-861880643)
 
 ## Before starting
 1. Ensure all Windows Updates are installed and the laptop is in a known-good state.
-1. I recommend you use a tool like [Uninstall Tool](https://crystalidea.com/?source=uninstalltool) to cleans up files missed by several of the uninstallers below.
-2. To install new NVIDIA and AMD drivers, I recommend installing both in "clean-up" or "clean install" mode, which deletes all the previous drivers and settings, then installing the most minimal set of drivers you need.
+2. I recommend you use a tool like [Uninstall Tool](https://crystalidea.com/?source=uninstalltool) to cleans up files missed by several of the uninstallers below.
+3. To install new NVIDIA and AMD drivers, I recommend installing both in "clean-up" or "clean install" mode, which deletes all the previous drivers and settings, then installing the most minimal set of drivers you need.
 
 ## Procedure
 
 ### Software cleanup
-Using your uninstaller of choice:
+Uninstall
 1. Uninstall Armoury Crate
-3. Uninstall ASUS Framework Service
-4. Uninstall ASUS Gamefirst IV (supposedly a network optimizer)
-5. Uninstall ROG Live Service
-6. Uninstall ROG Font Installer (AniMe Matrix font)
-7. Uninstall MyASUS (used for ASUS driver and firmware updates. Remove if you prefer to control these manually)
-8. Uninstall AURA
-9. Uninstall AURA Service
+2. Uninstall Armoury Service
+3. Uninstall ASUS Calibration
+4. Uninstall ROG CustomHotKey
+5. Uninstall ASUS Framework Service
+6. Uninstall ASUS Gamefirst IV (supposedly a network optimizer)
+7. Uninstall ROG Live Service
+8. Uninstall ROG Font Installer (AniMe Matrix font)
+9. Uninstall MyASUS (used for ASUS driver and firmware updates. Remove if you prefer to manually install updates)
+10. Uninstall AURA
+11. Uninstall AURA Service
+12. Uninstall ASUS Aac_NBOT HAL (in _Uninstall Tool_ this is under the **System** tab)
 
 ### Disable Services (basic)
 The ASUS Optimization service is responsible for keyboard shortcuts, so leave that running.
 
 Note that simply disabling some services may actually cause performance issues, if things are trying to query those services and they're not available.
 
-1. Disable Armoury Crate Control Interface (if it wasn't uninstalled from the above)
-2. Disable ASUS Link Near
-3. Disable ASUS Link Near Extension
-4. Disable ASUS Link Remote
-5. Disable ASUS Link Near
-7. Disable ASUS Software Manager
-8. Disable Asus System Analysis
-9. Disable ASUS System Diagnosis
-10. Disable ASUS Update Service (asus)
-11. Disable ASUS Update Service (asusm)
+1. Disable ASUSSwitch _(look at the folder location for this service first)_
+2. Disable Armoury Crate Control Interface (if it wasn't uninstalled from the above)
+3. Disable ASUS Link Near
+4. Disable ASUS Link Near Extension
+5. Disable AsusROGLSLService Download ROGLSLoader
+6. Disable ASUS Link Remote
+7. Disable ASUS Link Near
+8. Disable ASUS Software Manager
+9. Disable Asus System Analysis
+10. Disable ASUS System Diagnosis
+11. Disable ASUS Update Service (asus)
+12. Disable ASUS Update Service (asusm)
 
 ### Remove ASUS Services (more advanced)
 You can remove all the ASUS services except ASUS Optimization which is required for the hotkeys to work.
@@ -100,18 +107,22 @@ From an elevated command prompt run:
 7. `sc delete ASUSSystemDiagnosis`
 8. `sc delete asus`
 9. `sc delete asusm`
+10. `sc delete AsusROGLSLService`
+11. `sc delete AsusAppService`
+12. `sc delete ASUSSoftwareManager`
 
 ### Delete ASUS Scheduled Tasks
-1. Delete ASUS Update Checker 2.0
-2. Delete AsusSystemAnalysis_\[UUID]
-3. Delete MyASUSTask
-4. Disable StartCN (I don't delete this, simply because it's AMD, not ASUS)
-5. Delete ASUS\ArmourySocketServer
-6. Delete ASUS\UpdateTaskMachineCore
-7. Delete ASUS\UpdateTaskMachineUA
-8. Delete ASUS\P508PowerAgent_sdk
-9. Delete the ASUS folder (right-click, Delete folder)
-10. Delete leftover ASUS files
+1. Delete ASUS Optimization {UID}
+2. Delete ASUS Update Checker 2.0
+3. Delete AsusSystemAnalysis_\{UID}
+4. Delete MyASUSTask
+5. Disable StartCN (I don't delete this, simply because it's AMD, not ASUS)
+6. Delete ASUS\ArmourySocketServer
+7. Delete ASUS\UpdateTaskMachineCore
+8. Delete ASUS\UpdateTaskMachineUA
+9. Delete ASUS\P508PowerAgent_sdk
+10. Delete the ASUS folder (right-click, Delete folder)
+11. Delete leftover ASUS files
 
 ### End all processes in Task Manager:
 - ASUS*.exe
@@ -120,32 +131,37 @@ From an elevated command prompt run:
 - P50*.exe
 
 ### Delete files/folders
-1. Delete the folder C:\Program Files (x86)\ArmouryDevice
-2. Delete the folder C:\Program Files (x86)\ROG Live Service
-3. Delete the folder C:\Program Files (x86)\Update
-4. Delete the folder C:\Program Files (x86)\ASUS
-5. Delete the folder %LocalAppData%\ASUS
-6. Delete C:\Windows\System32\DriverStore\FileRepository\asussci2.inf_amd64_34ba03d292044348\ (**Note:** *I haven't done this next step, it's not necessary as the services are deleted, and it will corrupt the driver signature {CAT} which could cause Windows to reinstall it and undo everything you've done.*)
+1. Delete the folder `C:\Program Files (x86)\ArmouryDevice`
+2. Delete the folder `C:\Program Files (x86)\ROG Live Service`
+3. Delete the folder `C:\Program Files (x86)\Update` _(just be careful it belongs to ASUS)_
+4. Delete the folder `C:\Program Files (x86)\ASUS`
+5. Delete the folder `%LocalAppData%\ASUS`
+6. Delete the folder `%ProgramData%\ASUS`
+7. Delete `C:\Windows\System32\DriverStore\FileRepository\asussci2.inf_amd64_{UID}\` _(you will need to take ownership of these folders)_
    - ASUSLinkNear
    - ASUSLinkRemote
    - ASUSLinkRemoteLicense
    - ASUSSoftwareManager
    - ASUSSystemAnalysis
    - ASUSSystemDiagnosis
-7. Delete the folder C:\Program Files (x86)\LightingService
-8. It's safe to delete the entire folder C:\eSupport\ and contents
-9. It's safe to delete the entire folder C:\Drivers\ and contents
+   - _...Anything else except ASUSOptimization..._
+8. Delete the folder `C:\Program Files (x86)\LightingService`
+9. It's safe to delete the entire folder `C:\eSupport\` and contents
+10. It's safe to delete the entire folder `C:\Drivers\` and contents
+11. There were folders in `C:\Windows\System32\DriverStore\FileRepository` starting with `armourycrate*` which I deleted
+12. Delete `C:\Program Files (x86)\ASUS` (whole folder)
+13. Delete `C:\Program Files\ASUS` (whole folder)
 
 ### Enable On-screen display (OSD)
 Thank you to [u/EbolaBoi](https://reddit.com/u/EbolaBoi) for this tip!
 
 To enable the OSD for the Fn buttons, set the following file:
-`C:\Windows\System32\DriverStore\FileRepository\asussci2.inf_amd64_[UID]\ASUSOptimization\AsusOSD.exe`
+`C:\Windows\System32\DriverStore\FileRepository\asussci2.inf_amd64_{UID}\ASUSOptimization\AsusOSD.exe`
 ...to startup with Windows (either add it to the Startup folder or create a Scheduled Task).
 
-_Note:_ If you're happy with the default Windows OSD, you don't need to run the AsusOSD.exe.
+_Note: If you're happy with the default Windows OSD, you don't need to run the AsusOSD.exe._
 
-There may also be a few `asussci2.inf_amd64_[UID]` folders. They will likely have the same version number (2.1.9.0), but a binary compare reveals they are non-identical. Use the AsusOSD.exe with the newest date.
+There may also be a few `asussci2.inf_amd64_{UID}` folders. They will likely have the same version number (2.1.9.0), but a binary compare reveals they are non-identical. Use the AsusOSD.exe with the newest date.
 
 For further confirmation of using the correct file, this should also be the same file location the Asus Optimization Service runs from. You can copy this location from services.msc, i.e:
 ![Asus_Optimization](/images/asus_optimization.jpg)
