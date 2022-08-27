@@ -1,4 +1,4 @@
-# ASUS ROG Zephyrus G14 - Software Debloating
+# ASUS ROG Zephyrus G14 - Windows Debloating
 Originally posted as the ASUS G14 bloatware cleanup guide [here](https://www.reddit.com/r/ZephyrusG14/comments/k4ch5x/asus_zephyrus_g14_bloatwear_cleanup_guide/).
 
 ## Notes:
