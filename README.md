@@ -61,6 +61,10 @@ A lot of people aren't aware that disabling drivers in Device Manager also may d
 
 ## Procedure
 
+### Disable MyAsus in BIOS
+1. Enter BIOS by pressing ESC during the ROG logo
+2. Usually under **Advanced**, there is an option to disable auto-downloading of MyAsus in Windows
+
 ### Software cleanup
 Uninstall
 1. Uninstall Armoury Crate
